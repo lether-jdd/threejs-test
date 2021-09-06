@@ -1,5 +1,11 @@
 import * as THREE from 'three/build/three.module.js';
+
+import { Base } from './base'
+
 export class Stars{
+    constructor(baseIns){
+        this.baseIns = baseIns
+    }
     geometry = new THREE.BufferGeometry();
     starsMaterial = null
     //生成几何体
@@ -35,6 +41,6 @@ export class Stars{
         this.setMaterial()
         let stars = new THREE.ParticleSystem( this.geometry, this.starsMaterial );
         stars.scale.set( 300, 300, 300 );
-        return stars
+        this.baseIns.scene.add(stars)
     }
 }
